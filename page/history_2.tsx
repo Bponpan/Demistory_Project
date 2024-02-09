@@ -3,8 +3,8 @@ import * as React from "react";
   export default function () {
   return (
     <div>
-     <div className="grid place-items-center h-screen w-full">
-       <div className="flex flex-center bg-[#EFF7F2] rounded-3xl h-[470px] w-[1050px]">
+     <div className="flex justify-center items-center h-screen">
+       <div className="flex flex-center bg-[#EFF7F2] rounded-3xl h-[470px] w-[1050px]"style={{marginLeft: '-90px'}}>
          <div className="flex justify-center items-center">
         </div>
       <div>
