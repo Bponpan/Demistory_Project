@@ -1,11 +1,21 @@
-
-"use client"
-
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import pictu from '../pictu.png';
 import Link  from "next/link";
 import balls from '../balls.png';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
+
 
 
 function Navbar() {
@@ -59,38 +69,55 @@ function Navbar() {
     )
 }
 
+function createData(
+  datalist: string,
+  date: string,
+  
+  
+) {
+  return { datalist, date };
+}
+
+const rows = [
+  createData('พัดลมพัง', '21/12/2022'),
+  createData('แอร์ไม่เย็น', '21/12/2022'),
+  
+];
+
 export default function replist() {
 
     return (
         <div>
             <Navbar></Navbar>
-            <div>
-      <div className="flex justify-center items-center mt-10 ">
-        <div className="text-black text-base font-semibold"style={{ marginRight: "420px" }}>Detail</div>
-        <div className="text-black text-base font-semibold"style={{ marginRight: "-50px" }}>Date</div>
-        <div className="text-black text-base font-semibold"style={{ marginLeft: "500px" }}>Room Number: 8503</div>
-      </div>
-      <div className="bg-zinc-600 bg-opacity-80 self-stretch min-h-[1px] w-full mt-5" />
-      <div>
-        <div className="flex justify-center items-center mt-5">
-        <div className="text-gray-600 text-sm font-semibold"style={{ marginRight: "400px" }}>พัดลมพัง</div>
-        <div className="text-gray-600 text-sm font-semibold ">21/12/2022</div>
-        <div className="text-white text-base font-medium whitespace-nowrap items-stretch rounded backdrop-blur-2xl bg-red-600 self-stretch px-3 py-2"style={{ marginLeft: "500px" }}>
-      Cancel
-      </div>
-      </div>
-    </div>
-    <div>
-        <div className="flex justify-center items-center mt-5 ">
-        <div className="text-gray-600 text-sm font-semibold"style={{ marginRight: "400px" }}>พัดลมพัง</div>
-        <div className="text-gray-600 text-sm font-semibold ">21/12/2022</div>
-        <div className="text-white text-base font-medium whitespace-nowrap items-stretch rounded backdrop-blur-2xl bg-red-600 self-stretch px-3 py-2"style={{ marginLeft: "500px" }}>
-      Cancel
-      </div>
-      </div>
-    </div>
 
-    </div>
+            <TableContainer className="flex justify-center items-center mt-10 px-10" >
+              <Table >
+                <TableHead >
+                  <TableRow>
+                    <TableCell className="text-black text-base font-semibold" >Datalist</TableCell>
+                    <TableCell className="text-black text-base font-semibold" >Date</TableCell>
+                    <TableCell className="text-black text-base font-semibold">Roomnumber :</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody >
+          {rows.map((row) => (
+            <TableRow
+              key={row.datalist}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }} 
+            >
+              <TableCell  scope="row" className="text-gray-600 text-sm font-semibold">
+                {row.datalist}
+              </TableCell>
+              <TableCell className="text-gray-600 text-sm font-semibold ">{row.date}</TableCell>
+              <TableCell >
+                <Button className="text-white text-base font-medium whitespace-nowrap items-stretch rounded backdrop-blur-2xl bg-red-600 self-stretch px-3 py-2">Cancel</Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+      
         </div>
     );
 }
