@@ -25,7 +25,13 @@ function Navbar() {
 
         <div className="px-10 bg-[#FFFFFF]">
           <div className="text-green-400 text-base font-semibold relative my-10">
-          <Link href="/admin_history">History</Link>
+          <Link href="/admin_history">History finish</Link>
+          </div>
+        </div>
+
+        <div className="px-10 ">
+          <div className="text-green-50 text-base font-semibold relative my-10">
+          <Link href="/admin_datauser">Data User</Link>
           </div>
         </div>
 
