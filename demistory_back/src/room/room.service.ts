@@ -26,10 +26,7 @@ export class RoomService {
     return this.roomRepository.save(room);
   }
 
-  async update(id: number, data: Partial<RoomDTO>): Promise<Room> {
-    await this.roomRepository.update(id, data);
-    return this.roomRepository.findOne({ where: { id } });
-  }
+ 
 
   async deleteById(id: number): Promise<void> {
   const deleteResult = await this.roomRepository.delete({ id });

@@ -1,0 +1,82 @@
+@hostname = 127.0.0.1
+@port = 3001
+@serverUel = http://{{hostname}}:{{port}}
+@baseUrl = http://{{hostname}}:{{port}}
+
+###
+GET  {{baseUrl}}
+###
+
+POST {{baseUrl}}/User
+Content-Type: application/json
+
+
+{
+    "username" : "Woramet Y", 
+    "password" : "112233",
+    "phonenumber" : "0932221111"
+    
+    
+
+}
+###
+
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username" : "Woramet Y",
+    "password" : "112233"
+}
+###
+GET {{baseUrl}}/auth/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTE1LCJ1c2VybmFtZSI6IldvcmFtZXQgWSIsImlhdCI6MTcwODA1OTg2NCwiZXhwIjoxNzA4OTIzODY0fQ.6NSWnYQ8jD2duFErVr29FnSDuRYVFxV6NwTnMNNrjzI
+###
+GET  {{baseUrl}}/User
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/Complaints
+
+###
+POST {{baseUrl}}/complaints
+Content-Type: application/json
+
+{
+    "description" : "แอร์ไม่เย็น",
+    "UserId" : 101
+}
+
+###
+DELETE {{baseUrl}}/User
+Content-Type: application/json
+
+{
+    "id" : "106",
+    "username" : "Ponpan",
+    "password" : "987654",
+    "phonenumber" : "052003225",
+    
+}
+
+###
+GET {{baseUrl}}/rooms
+
+###
+POST {{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+    "room" : "712"
+    
+}
+###
+POST {{baseUrl}}/usertypes
+Content-Type: application/json
+
+{
+    "type" : "admin"
+}
+###

@@ -8,8 +8,8 @@ export class UserType {
     id : number ;
 
     @Column()
-  type : string; 
-  @OneToOne(() => User)
-  user: User;
+    type : string; 
+    @OneToOne(() => User)
+    user: User;
 }
 

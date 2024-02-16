@@ -25,10 +25,6 @@ export class UserTypeService {
     return this.userTypeRepository.save(userType);
   }
 
-  async update(id: number, data: Partial<UserTypeDTO>): Promise<UserType> {
-    await this.userTypeRepository.update(id, data);
-    return this.userTypeRepository.findOne({ where: { id } });
-  }
 
   async deleteById(id: number): Promise<void> {
   const deleteResult = await this.userTypeRepository.delete({ id });

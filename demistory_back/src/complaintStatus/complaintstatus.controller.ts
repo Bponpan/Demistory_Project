@@ -23,10 +23,6 @@ export class ComplaintStatusController {
     return this.complaintStatusService.create(createComplaintDTO)
   }
 
-  @Put(":id")
-  updateUserById(@Param('id') id: number, @Body() updateComplaintDTO: Partial<ComplaintStatusDTO>): Promise<ComplaintStatus> {
-  return this.complaintStatusService.update(id, updateComplaintDTO);
-}
 
   @Delete(":id")
   deleteUserById(@Param('id') id: number): { message: string } {

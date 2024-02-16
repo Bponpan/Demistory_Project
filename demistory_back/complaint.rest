@@ -1,0 +1,14 @@
+@hostname = 127.0.0.1
+
+@port = 3306
+
+@baseUrl = http://{{hostname}}:{{port}}
+
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    
+    
+}
+

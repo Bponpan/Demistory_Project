@@ -12,20 +12,16 @@ export class UserTypeController {
     return this.userTypeService.findAll();
   }
   
-  @Get("id")
+  @Get(":id")
   getUserById(@Param('id') id : number) : Promise<UserType> {
     return this.userTypeService.findOne(id);
   }
 
-  @Post(":id")
+  @Post()
   postCreate(@Body() createUserDTO : UserTypeDTO) : Promise<UserType> {
     return this.userTypeService.create(createUserDTO)
   }
 
-  @Put(":id")
-  updateUserById(@Param('id') id: number, @Body() updateUserTypeDTO: Partial<UserTypeDTO>): Promise<UserType> {
-  return this.userTypeService.update(id, updateUserTypeDTO);
-}
 
   @Delete(":id")
   deleteUserById(@Param('id') id: number): { message: string } {

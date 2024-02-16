@@ -12,20 +12,16 @@ export class RoomController {
     return this.roomService.findAll();
   }
 
-  @Get("id")
+  @Get(":id")
   getUserById(@Param('id') id : number) : Promise<Room> {
     return this.roomService.findOne(id);
   }
 
-  @Post(":id")
+  @Post()
   postCreate(@Body() createUserDTO : RoomDTO) : Promise<Room> {
     return this.roomService.create(createUserDTO)
   }
 
-  @Put(":id")
-  updateUserById(@Param('id') id: number, @Body() updateRoomDTO: Partial<RoomDTO>): Promise<Room> {
-  return this.roomService.update(id, updateRoomDTO);
-}
 
   @Delete(":id")
   deleteUserById(@Param('id') id: number): { message: string } {

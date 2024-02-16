@@ -26,10 +26,7 @@ export class UserController {
     return this.userService.create(createUserDTO)
   }
 
-  @Put(":id")
-  updateUserById(@Param('id') id: number, @Body() updateUserDTO: Partial<UserDTO>): Promise<User> {
-  return this.userService.update(id, updateUserDTO);
-}
+  
 
   @Delete(":id")
   deleteUserById(@Param('id') id: number): { message: string } {

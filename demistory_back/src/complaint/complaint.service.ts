@@ -1,8 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Complaint } from './complaint.entity';
 import { ComplaintDTO } from './complaint.dto';
+import { User } from 'src/user/user.entity';
 
 
 
@@ -10,13 +11,19 @@ import { ComplaintDTO } from './complaint.dto';
 export class ComplaintService {
   constructor(
     @InjectRepository(Complaint)
-    private complaintRepository : Repository<Complaint>
+    private complaintRepository : Repository<Complaint>,
+
+    @InjectRepository(User)
+    private userRepository : Repository<User>
+
   ) {
 
   }
   
   findAll() : Promise<Complaint[]> {
-    return this.complaintRepository.find();
+    return this.complaintRepository.find({
+      relations : ["user","user.room"]
+    });
   }
 
   findOne(id : number) : Promise<Complaint|null> {
@@ -24,14 +31,13 @@ export class ComplaintService {
 
   }
 
-  create(complaint : ComplaintDTO ) : Promise<Complaint|null> {
-    return this.complaintRepository.save(complaint);
+  async create(complaint : ComplaintDTO ) : Promise<Complaint|null> {
+    let complaintEntity = new Complaint()
+    complaintEntity.description = complaint.description
+    complaintEntity.user = await this.userRepository.findOneBy({id : complaint.userId})
+    return this.complaintRepository.save(complaintEntity);
   }
 
-  async update(id: number, data: Partial<ComplaintDTO>): Promise<Complaint> {
-    await this.complaintRepository.update(id, data);
-    return this.complaintRepository.findOne({ where: { id } });
-  }
 
   async deleteById(id: number): Promise<void> {
   const deleteResult = await this.complaintRepository.delete({ id });

@@ -14,7 +14,7 @@ export class User {
     username : string;
 
     @Column()
-    password: string; // Change from number to string
+    password: string; 
 
     @Column()
     phonenumber: number;

@@ -14,20 +14,17 @@ export class ComplaintController {
     return this.complaintService.findAll();
   }
 
-  @Get("id")
+  @Get(":id")
   getUserById(@Param('id') id : number) : Promise<Complaint> {
     return this.complaintService.findOne(id);
   }
 
-  @Post(":id")
+  @Post()
   postCreate(@Body() createComplaintDTO : ComplaintDTO) : Promise<Complaint> {
     return this.complaintService.create(createComplaintDTO)
   }
 
-  @Put(":id")
-  updateUserById(@Param('id') id: number, @Body() updateComplaintDTO: Partial<ComplaintDTO>): Promise<Complaint> {
-  return this.complaintService.update(id, updateComplaintDTO);
-}
+  
 
   @Delete(":id")
   deleteUserById(@Param('id') id: number): { message: string } {

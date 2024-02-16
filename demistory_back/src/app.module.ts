@@ -21,10 +21,18 @@ import { UserType } from './userType/usertype.entity';
 import { ComplaintStatus } from './complaintStatus/complaintstatus.entity';
 import { Room } from './room/room.entity';
 import { ComplaintNotification } from './notification/notification.entity';
+import { AuthController } from './auth/auth.controller';
+import { AuthService } from './auth/auth.service';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    JwtModule.register({
+      global: true,
+      secret: "secret",
+      signOptions: { expiresIn: '10d' },
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
@@ -41,7 +49,7 @@ import { ComplaintNotification } from './notification/notification.entity';
     }),
     TypeOrmModule.forFeature([Complaint, User, UserType, ComplaintStatus, Room, ComplaintNotification]),
   ],
-  controllers: [AppController, ComplaintController, NotificationController, ComplaintStatusController, RoomController, UserController, UserTypeController],
-  providers: [AppService, ComplaintService, NotificationService, ComplaintStatusService, RoomService, UserService, UserTypeService],
+  controllers: [AppController,AuthController, ComplaintController, NotificationController, ComplaintStatusController, RoomController, UserController, UserTypeController],
+  providers: [AppService,AuthService, ComplaintService, NotificationService, ComplaintStatusService, RoomService, UserService, UserTypeService],
 })
 export class AppModule {}

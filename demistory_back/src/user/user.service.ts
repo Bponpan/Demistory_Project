@@ -7,6 +7,9 @@ import { promises } from 'dns';
 
 @Injectable()
 export class UserService {
+  findOneByOrFail(arg: { username: string; }) {
+      return this.userRepository.findOneByOrFail(arg)
+  }
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
@@ -19,7 +22,10 @@ export class UserService {
   }
 
   findOne(id : number) : Promise<User|null> {
-    return this.userRepository.findOneBy({id:id});
+    return this.userRepository.findOne({
+      relations : ['room','usertype'],
+      where : {id:id}
+    });
 
   }
 
@@ -27,10 +33,7 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  async update(id: number, data: Partial<UserDTO>): Promise<User> {
-    await this.userRepository.update(id, data);
-    return this.userRepository.findOne({ where: { id } });
-  }
+  
 
   async deleteById(id: number): Promise<void> {
   const deleteResult = await this.userRepository.delete({ id });

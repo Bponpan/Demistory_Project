@@ -28,10 +28,6 @@ export class ComplaintStatusService {
     return this.complaintStatusRepository.save(complaintStatus);
   }
 
-  async update(id: number, data: Partial<ComplaintStatusDTO>): Promise<ComplaintStatus> {
-    await this.complaintStatusRepository.update(id, data);
-    return this.complaintStatusRepository.findOne({ where: { id } });
-  }
 
   async deleteById(id: number): Promise<void> {
   const deleteResult = await this.complaintStatusRepository.delete({ id });
