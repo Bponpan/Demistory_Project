@@ -9,7 +9,7 @@ function Navbar() {
     <nav >
       <div className="bg-[#70C174] bg-cover p-8 ">
         <div className="text-white text-5xl xl:font-serif font-bold">
-          <Link href="/page">DEMISTORY SYSTEM</Link></div>
+          <Link href="/report_home_admin">DEMISTORY SYSTEM</Link></div>
       </div>
 
       <div className="bg-green-200 flex grid-cols-2 gap-4 place-items-stretch px-10">
@@ -45,7 +45,7 @@ function Navbar() {
           <div className="px-5 flex justify-end ">
             <div className="text-[#525560] font-semibold relative my-8">
             <div className="text-right text-sm">WORAMET Y</div>
-            <div className="text-right text-sm">User</div>
+            <div className="text-right text-sm">Admin</div>
             </div>
           </div>
 
@@ -65,6 +65,58 @@ export default function datauser() {
     return (
         <div>
             <Navbar></Navbar>
+
+            <div>
+       <table className=" flex flex-center  items-center mt-6 ">
+       <table className="text-center flex flex-row bg-[#EFF7F2] h-[35px] w-[100%] "style={{ borderRadius: "5px" }}>
+        <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "16px",marginLeft:"-110px"}}>Roomnumber</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "16px",marginLeft:"20px" }}>Name</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "16px",marginRight:"100px" }}>Phonenumber</table>
+       </table>
+     </table>
+    
+
+    <div>
+    <table className=" flex flex-center  items-center mt-6 ">
+    <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"175px"}}>3369</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"180px" }}>ponpan</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"125px" }}>0896650235</table>
+        </table>
+      </div>
+
+      <div>
+    <table className=" flex flex-center  items-center mt-5 ">
+    <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"175px"}}>3602</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"180px" }}>woramet</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"125px" }}>0699847733</table>
+        </table>
+      </div>
+
+      <div>
+    <table className=" flex flex-center  items-center mt-5 ">
+    <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"175px"}}>3508</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"180px" }}>nanta</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"125px" }}>0825569023</table>
+        </table>
+      </div>
+
+      <div>
+    <table className=" flex flex-center  items-center mt-5 ">
+    <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"175px"}}>2501</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"180px" }}>nontapat</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"125px" }}>0967844566</table>
+        </table>
+      </div>
+
+      <div>
+    <table className=" flex flex-center  items-center mt-5 ">
+    <table className="mt-1.5"style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"175px"}}>4001</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"180px" }}>warawan</table>
+        <table className="mt-1.5" style={{ width: '35%', color: '#000',fontSize: "12px",marginLeft:"125px" }}>0872198565</table>
+        </table>
+      </div>
+
+      </div>
 
         </div>
     )
