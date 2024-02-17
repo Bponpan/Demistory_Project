@@ -25,15 +25,15 @@ export default  function Signin() {
     const doLogin = async () => {
       let result = await login(loginForm)
       if(result){
-        // if(user.usertype == "admin"){
-          // router.push("a/dmin_report_list")
+        if(user.usertype == "admin"){
+           router.push("a/report_home_admin")
 
-        // }else {
-          // router.push("/report_repair")
+         }else {
+           router.push("/report_home_user")
 
-        // }
+        }
 
-        router.push("admin_report_list")
+        
       }else {
 //display dialog
       }

@@ -4,11 +4,6 @@ import Image from 'next/image';
 import pictu from '../pictu.png';
 import Link  from "next/link";
 import balls from '../balls.png';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -133,3 +128,4 @@ export default function replist() {
         </div>
     );
 }
+

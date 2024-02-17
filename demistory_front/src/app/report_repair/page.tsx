@@ -9,41 +9,41 @@ import { error } from 'console';
 
 
 type User = {
-    "id": 104,
-    "username": "Woramet Y",
-    "password": "123456",
-    "phonenumber": 933332222
+  "id": 115,
+  "username": "Woramet Y",
+  "password": "112233",
+  "phonenumber": 932221111
 }
 
 function UserItem({user} : {user:User}){
-   return <div key={user.id}>{user.username}</div>;
+ return <div key={user.id}>{user.username}</div>;
 }
 
 function UserList(){
-  const [users, setUsers] = useState([] as User[]);
-  const targetUserId = 104; 
+const [users, setUsers] = useState([] as User[]);
+const targetUserId = 115; 
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:3001/User", {
-      method: "GET",
+useEffect(() => {
+  fetch("http://127.0.0.1:3001/User", {
+    method: "GET",
+  })
+    .then(async (r) => {
+      setUsers(await r.json());
     })
-      .then(async (r) => {
-        setUsers(await r.json());
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+}, []);
 
-  const filteredUsers = users.filter((user) => user.id === targetUserId);
+const filteredUsers = users.filter((user) => user.id === targetUserId);
 
-  return (
-    <div>
-      {filteredUsers.map((user) => (
-        <UserItem key={user.id} user={user} />
-      ))}
-    </div>
-  );
+return (
+  <div>
+    {filteredUsers.map((user) => (
+      <UserItem key={user.id} user={user} />
+    ))}
+  </div>
+);
 }
 
 type Room = {
@@ -159,7 +159,7 @@ export default function report() {
         },
         body : JSON.stringify({
           "description" : reportForm.description,
-          "userId" : 101
+          "userId" : 115
         })
       })
 
@@ -207,9 +207,9 @@ export default function report() {
                             aria-label="Description"
                         />
                         </label>
-                    <button type='button' onClick={reportFormSubmit} className="justify-center self-center px-8 py-4 mt-12 text-base font-medium text-right text-white whitespace-nowrap bg-green-400 rounded backdrop-blur-2xl max-md:px-5 max-md:mt-10 my-8">
+                    <Link href="/Successfull"><button type='button' onClick={reportFormSubmit} className="justify-center self-center px-8 py-4 mt-12 text-base font-medium text-right text-white whitespace-nowrap bg-green-400 rounded backdrop-blur-2xl max-md:px-5 max-md:mt-10 my-8">
                         Submit
-                    </button>
+                    </button></Link>
                     </form>
                     </div>
                     </div>
