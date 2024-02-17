@@ -207,7 +207,8 @@ export default function report() {
                             aria-label="Description"
                         />
                         </label>
-                    <Link href="/Successfull"><button type='button' onClick={reportFormSubmit} className="justify-center self-center px-8 py-4 mt-12 text-base font-medium text-right text-white whitespace-nowrap bg-green-400 rounded backdrop-blur-2xl max-md:px-5 max-md:mt-10 my-8">
+                    <Link href="/Successfull" className="justify-center self-center">
+                    <button type='button' onClick={reportFormSubmit} className="justify-center self-center px-8 py-4 mt-12 text-base font-medium text-right text-white whitespace-nowrap bg-green-400 rounded backdrop-blur-2xl max-md:px-5 max-md:mt-10 my-8">
                         Submit
                     </button></Link>
                     </form>

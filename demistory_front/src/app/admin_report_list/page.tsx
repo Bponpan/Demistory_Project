@@ -149,7 +149,7 @@ function ReportRow({report}){
        </div>
       <div style={{ marginLeft: "15px" }}>
       <div className="flex flex-row bg-[#ffff]" style={{ borderRadius: "4px", width: '25px', height: "23px", alignItems: "center",marginLeft:'80px' }}>
-      <Link href="/complaints_status"><div style={{ flex: "1", color: '#70C174', fontSize: "12px", textAlign: "center" }}>
+      <Link href={"/complaints_status/"+ report.id}><div style={{ flex: "1", color: '#70C174', fontSize: "12px", textAlign: "center" }}>
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a36ef8adcb1b14d984b2f4fdf9223643b742dfc4059f33c195afe0cd20f0dba?apiKey=d2ea1981bd5246b0a7a3b636b55c7b9d&"></img>
       </div></Link>
    </div>

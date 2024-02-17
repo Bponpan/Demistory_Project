@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import pictu from '../pictu.png';
@@ -11,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
+import { error } from 'console';
 
 
 
@@ -93,6 +95,34 @@ export default function replist() {
         loadReport()
     },[])
 
+    const [itemIdToDelete, setItemIdToDelete] = useState(null);
+
+    const deletecomplaints = async (id)  => {
+      let response = await fetch("http://127.0.0.1:3001/complaints/"+ id,  {
+        method : "DELETE",
+        headers : {
+          "Content-Type" : "application/json"
+        },
+      });
+
+      try {
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data.message);
+        } else {
+          const errorData = await response.json();
+          console.error('Error:', errorData.message);
+        }
+      } catch (error) {
+        console.error('Network error', error);
+      }
+      await loadReport()
+    }
+
+    
+
+
+
     return (
         <div>
             <Navbar></Navbar>
@@ -117,7 +147,9 @@ export default function replist() {
               </TableCell>
               <TableCell className="text-gray-600 text-sm font-semibold ">{row.date ?? "NODATE"}</TableCell>
               <TableCell >
-                <Button className="text-white text-base font-medium whitespace-nowrap items-stretch rounded backdrop-blur-2xl bg-red-600 self-stretch px-3 py-2">Cancel</Button>
+                <Button onClick={() => {deletecomplaints(row.id)}} className="text-white text-base font-medium whitespace-nowrap items-stretch rounded backdrop-blur-2xl bg-red-600 self-stretch px-3 py-2">
+                  Cancel
+                </Button>
               </TableCell>
             </TableRow>
           ))}
@@ -128,4 +160,5 @@ export default function replist() {
         </div>
     );
 }
+
 

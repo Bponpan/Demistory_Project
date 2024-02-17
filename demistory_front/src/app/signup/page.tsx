@@ -4,6 +4,7 @@ import Image from "next/image";
 import pictu from "../pictu.png";
 
 export default async function Signup() {
+    
 
     return (
 

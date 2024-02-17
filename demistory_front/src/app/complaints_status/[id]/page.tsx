@@ -1,10 +1,10 @@
 "use client"
-import de from '../213.png';
+import de from '../../213.png';
 import React, { useEffect, useId, useState } from 'react';
 import Image from 'next/image';
-import pictu from '../pictu.png';
+import pictu from '../../pictu.png';
 import Link  from "next/link";
-import balls from '../balls.png';
+import balls from '../../balls.png';
 
 type User = {
   "id": 115,
@@ -81,7 +81,10 @@ function UserRoom(){
 }
 
 
-export default function Home() {
+export default function Home({params}) {
+  console.log(params)
+  
+
   return (
     <div>
       

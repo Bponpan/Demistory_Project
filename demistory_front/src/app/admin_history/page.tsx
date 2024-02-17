@@ -228,14 +228,6 @@ function ReportRow({report}){
                 </div>
 
                 <div>
-                <div className=" flex flex-center justify-center items-center mt-7 ">
-                <div className="text-center flex flex-row h-[35px] w-[895px]"style={{ marginLeft: "80px" }}>
-                    <div style={{ width: '45%', color: '#000',fontSize: "12px" }}>พัดลมพัง</div>
-                    <div style={{ width: '45%', color: '#000',fontSize: "12px" }}>11/10/67</div>
-                    <div style={{ width: '45%', color: '#000',fontSize: "12px" }}>-</div>
-                    <div style={{ width: '45%', color: '#FF1010',fontSize: "12px" }}>กำลังดำเนินการ</div>
-                </div>
-                </div>
                 <div>
                 {reportList.map(r => <ReportRow key={r.id} report={r}></ReportRow>)}
                 </div>
