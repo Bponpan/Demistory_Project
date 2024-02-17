@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import pictu from '../pictu.png';
 import Link  from "next/link";
@@ -13,10 +13,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import { error } from 'console';
+import { AuthProviderContext } from '../context/AuthProvider';
 
 
 
 function Navbar() {
+  const {user} = useContext(AuthProviderContext)
     return(
         <nav>
       <div className="bg-[#70C174] bg-cover p-8 ">
@@ -51,7 +53,7 @@ function Navbar() {
 
           <div className="px-5 flex justify-end ">
             <div className="text-[#525560] font-semibold relative my-8">
-            <div className="text-right text-sm">WORAMET Y</div>
+            <div className="text-right text-sm">{user?.username}</div>
             <div className="text-right text-sm">User</div>
             </div>
           </div>

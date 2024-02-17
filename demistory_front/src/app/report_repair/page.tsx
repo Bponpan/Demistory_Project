@@ -1,50 +1,15 @@
 "use client"
 
-import React, { useEffect, useId, useState } from 'react';
+import React, { useContext, useEffect, useId, useState } from 'react';
 import Image from 'next/image';
 import pictu from '../pictu.png';
 import Link  from "next/link";
 import balls from '../balls.png';
 import { error } from 'console';
+import { AuthProviderContext } from '../context/AuthProvider';
 
 
-type User = {
-  "id": 115,
-  "username": "Woramet Y",
-  "password": "112233",
-  "phonenumber": 932221111
-}
 
-function UserItem({user} : {user:User}){
- return <div key={user.id}>{user.username}</div>;
-}
-
-function UserList(){
-const [users, setUsers] = useState([] as User[]);
-const targetUserId = 115; 
-
-useEffect(() => {
-  fetch("http://127.0.0.1:3001/User", {
-    method: "GET",
-  })
-    .then(async (r) => {
-      setUsers(await r.json());
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error);
-    });
-}, []);
-
-const filteredUsers = users.filter((user) => user.id === targetUserId);
-
-return (
-  <div>
-    {filteredUsers.map((user) => (
-      <UserItem key={user.id} user={user} />
-    ))}
-  </div>
-);
-}
 
 type Room = {
   "id": 2,
@@ -83,6 +48,8 @@ function UserRoom(){
 }
 
 function Navbar(){
+  const {user} = useContext(AuthProviderContext)
+
     return (
         <nav>
       <div className="bg-[#70C174] bg-cover p-8 ">
@@ -116,7 +83,7 @@ function Navbar(){
 
           <div className="px-5 flex justify-end ">
             <div className="text-[#525560] font-semibold relative my-8">
-            <div className="text-right text-sm">WORAMET Y</div>
+            <div className="text-right text-sm">{user?.username}</div>
             <div className="text-right text-sm">User</div>
             </div>
           </div>
@@ -138,6 +105,8 @@ interface ComplaintDTO {
 }
 
 export default function report() {
+
+  const {user} = useContext(AuthProviderContext)
 
     const [reportForm, setReportForm] = useState({description : ''} as ComplaintDTO)
 
@@ -178,7 +147,7 @@ export default function report() {
                         <div className="text-black">Room number</div>
                         <div className="justify-center py-5 mt-4 whitespace-nowrap bg-white text-zinc-600">
                           <div className="text-left pl-5 my-0"> 
-                          <UserRoom></UserRoom>
+                          {user?.room.room}
                           </div>
                         </div>
                         </div>
@@ -186,7 +155,7 @@ export default function report() {
                         <div className="text-black">Name</div>
                         <div className="justify-center py-5 mt-4 bg-white text-zinc-600">
                             <div className="text-left pl-5 my-0"> 
-                            <UserList></UserList>
+                            {user?.username}
                             </div>
                         </div>
                         </div>

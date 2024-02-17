@@ -4,12 +4,18 @@ import { UserService } from './user.service';
 import { request } from 'http';
 import { User } from './user.entity';
 
+interface registerDto{
+  name : string;
+  phonenumber : number;
+  roomnumber : number;
+  password : string
+}
+
 @Controller('user')
 export class UserController {
   constructor(private readonly userService : UserService){
 
   }
-
 
   @Get()
   getIndex(@Req() request : Request) : Promise<User[]> {
@@ -22,8 +28,8 @@ export class UserController {
   }
 
   @Post()
-  postCreate(@Body() createUserDTO : UserDTO) : Promise<User> {
-    return this.userService.create(createUserDTO)
+  postCreate(@Body() createUserDTO : registerDto) :any {
+    return this.userService.createUser(createUserDTO)
   }
 
   

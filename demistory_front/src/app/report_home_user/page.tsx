@@ -4,8 +4,11 @@ import Image from 'next/image';
 import pictu from '../pictu.png';
 import Link  from "next/link";
 import balls from '../balls.png';
+import { AuthProviderContext } from '../context/AuthProvider';
+import { useContext } from 'react';
 
 function Navbar() {
+  const {user} = useContext(AuthProviderContext)
   return(
     <nav>
       <div className="bg-[#70C174] bg-cover p-8 ">
@@ -39,7 +42,7 @@ function Navbar() {
 
           <div className="px-5 flex justify-end ">
             <div className="text-[#525560] font-semibold relative my-8">
-            <div className="text-right text-sm">WORAMET Y</div>
+            <div className="text-right text-sm">{user?.username}</div>
             <div className="text-right text-sm">User</div>
             </div>
           </div>

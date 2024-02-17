@@ -2,9 +2,9 @@
 import * as Raect from "react";
 import Link from "next/link";
 import Image from "next/image";
-import pictu from "./pictu.png";
+import pictu from "../pictu.png";
 import { useState,useContext } from "react";
-import { AuthProvider, AuthProviderContext } from "./context/AuthProvider";
+import { AuthProvider, AuthProviderContext } from "../context/AuthProvider";
 import { useRouter } from "next/navigation";
 
 
@@ -25,10 +25,10 @@ export default  function Signin() {
     const doLogin = async () => {
       let result = await login(loginForm)
       if(result){
-        if(user.usertype == "user"){
+        if(user.usertype == "admin"){
 
          }else {
-           router.push("/report_home_user")
+           router.push("/report_home_admin")
 
         }
 
@@ -44,19 +44,9 @@ export default  function Signin() {
                 <div className="mx-auto w-full max-w-md">
                 <Image src={pictu} width='200' height='40'  className="mx-auto w-40  h-auto" alt='' />
                     <h2 className="text-center text-black-100 mt-6 text-3xl font-bold tracking-tight">
-                        Sign in to account User
+                        Sign in for admin
                     </h2>
-                    <p className="mt-2 text-center text-sm text-black-100">
-                        Or{" "}
-                        <Link href="/signup" className="font-medium text-purple hover:text-indigo-500">
-                            Click here to Register now
-                        </Link>
-                    </p>
-                    <p className="mt-2 text-center text-sm text-black-100">
-                        <Link href="/adminsignin" className="font-medium text-purple hover:text-indigo-500">
-                            Click here for admin
-                        </Link>
-                        </p>
+                    
 
 
                 </div>
