@@ -18,10 +18,12 @@ export class ComplaintStatusController {
     return this.complaintStatusService.findOne(id);
   }
 
-  @Post(":id")
+  @Post()
   postCreate(@Body() createComplaintDTO : ComplaintStatusDTO) : Promise<ComplaintStatus> {
     return this.complaintStatusService.create(createComplaintDTO)
   }
+
+  
 
 
   @Delete(":id")

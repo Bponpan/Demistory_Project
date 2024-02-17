@@ -8,6 +8,11 @@ export class ComplaintController {
   constructor(private readonly complaintService : ComplaintService){
 
   }
+  @Delete(":id")
+  deleteUserById(@Param('id') id: number): { message: string } {
+  this.complaintService.deleteById(id);
+  return { message: "User deleted successfully" };
+}
 
   @Get()
   getIndex(@Req() request : Request) : Promise<Complaint[]> {
@@ -19,6 +24,11 @@ export class ComplaintController {
     return this.complaintService.findOne(id);
   }
 
+  @Post(":id/status")
+  postUpdateStatus(@Param('id') id : number,@Body() status:{id:number}) : Promise<Complaint> {
+    return this.complaintService.updateStatus(id,status.id);
+  }
+
   @Post()
   postCreate(@Body() createComplaintDTO : ComplaintDTO) : Promise<Complaint> {
     return this.complaintService.create(createComplaintDTO)
@@ -26,9 +36,5 @@ export class ComplaintController {
 
   
 
-  @Delete(":id")
-  deleteUserById(@Param('id') id: number): { message: string } {
-  this.complaintService.deleteById(id);
-  return { message: "User deleted successfully" };
-}
+  
 }

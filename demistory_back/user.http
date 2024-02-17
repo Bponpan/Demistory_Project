@@ -12,9 +12,10 @@ Content-Type: application/json
 
 
 {
-    "username" : "Woramet Y", 
-    "password" : "112233",
-    "phonenumber" : "0932221111"
+    "username" : "Woraa", 
+    "password" : "111222",
+    "phonenumber" : "0922222333"
+    
     
     
 
@@ -80,3 +81,9 @@ Content-Type: application/json
     "type" : "admin"
 }
 ###
+POST {{baseUrl}}/complaints/6/status
+Content-Type: application/json
+
+{
+    "id" : 2
+}

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Complaint } from './complaint.entity';
 import { ComplaintDTO } from './complaint.dto';
 import { User } from 'src/user/user.entity';
+import { ComplaintStatus } from 'src/complaintStatus/complaintstatus.entity';
 
 
 
@@ -14,7 +15,10 @@ export class ComplaintService {
     private complaintRepository : Repository<Complaint>,
 
     @InjectRepository(User)
-    private userRepository : Repository<User>
+    private userRepository : Repository<User>,
+
+    @InjectRepository(ComplaintStatus)
+    private complaintStatusRepository : Repository<ComplaintStatus>
 
   ) {
 
@@ -40,9 +44,22 @@ export class ComplaintService {
 
 
   async deleteById(id: number): Promise<void> {
-  const deleteResult = await this.complaintRepository.delete({ id });
-  if (deleteResult.affected === 0) {
-    throw new NotFoundException(`User with id ${id} not found`);
+    const deleteResult = await this.complaintRepository.delete({ id });
+    if (deleteResult.affected === 0) {
+      throw new NotFoundException(`User with id ${id} not found`);
+    }
   }
+
+  async updateStatus(id:number,statusId:number) : Promise<Complaint|null> {
+    let status = await this.complaintStatusRepository.findOneOrFail({where :{id: statusId} })
+    let complaint = await this.complaintRepository.findOneOrFail({where : {id : id}})
+    complaint.complaintStatus = status
+    await this.complaintRepository.save(complaint)
+
+    return complaint
+    
+  }
+
+
 }
-}
+
